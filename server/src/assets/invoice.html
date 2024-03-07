@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="h-[297mm] w-[210mm] p-12 pl-32">
+      <div class="flex justify-between">
+        <div>
+          <p class="pb-2 text-4xl">MB Road apples</p>
+          <p class="text-sm text-gray-400">4520 Wood Duck Drive</p>
+          <p class="text-sm text-gray-400">Marquette Michigan 49855</p>
+        </div>
+        <div>
+          <img src="https://logo.clearbit.com/react.com" />
+        </div>
+      </div>
+      <div class="flex justify-between pt-16">
+        <div>
+          <p>01/31/2022</p>
+          <p class="pb-3 text-4xl font-bold">INVOICE</p>
+          <p class="text-sm font-bold">
+            INVOICE NO. <span class="pl-1 font-normal">0001</span>
+          </p>
+          <p class="text-sm font-bold">
+            DUE DATE: <span class="pl-1 font-normal">02/15/2002</span>
+          </p>
+        </div>
+        <div class="pl-2 text-right">
+          <p class="text-gray-400">CLIENT</p>
+          <p class="font-bold">Tony Stark</p>
+          <p class="text-sm">Avengers Mansion</p>
+          <p class="text-sm">890 Fifth Avenue</p>
+          <p class="text-sm">Manhattan New York 10004</p>
+        </div>
+      </div>
+      <div class="pt-16">
+        <table class="w-full table-auto text-sm">
+          <thead class="border-b-2">
+            <tr class="h-10 text-left">
+              <th>ITEM</th>
+              <th>QUANTITY</th>
+              <th>PRICE €</th>
+              <th class="text-right">TOTAL €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="h-10">
+              <td>Iron Man Suit</td>
+              <td>3</td>
+              <td>120.00</td>
+              <td class="text-right">360.00</td>
+            </tr>
+            <tr class="h-10">
+              <td>Helicopter</td>
+              <td>2</td>
+              <td>750.00</td>
+              <td class="text-right">1500.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-end">
+        <p class="pt-6 text-xl font-bold">1860.00 €</p>
+      </div>
+      <div class="pt-16 text-sm">
+        <p class="font-bold">PAYMENT ADVICE</p>
+        <p>Account name: MB Road apples</p>
+        <p>Bank name: Hello World</p>
+        <p>IBAN: GB95BARC20038428989175</p>
+      </div>
+    </div>
+  </body>
+</html>

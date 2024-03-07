@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String
+  fullname  String?
+  address   String?
+  password  String
+  image     String?
+  role      Role     @default(STAFF)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Customer {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  address      String?
+  mobileNumber String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  Sales        Sales[]
+
+  @@map("customers")
+}
+
+model Sales {
+  id          Int           @id @default(autoincrement())
+  saleDate    String
+  totalPrice  Decimal
+  customer    Customer      @relation(fields: [customer_id], references: [id])
+  customer_id Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  DetailSales DetailSales[]
+
+  @@map("sales")
+}
+
+model DetailSales {
+  id           Int      @id @default(autoincrement())
+  totalProduct Int
+  subTotal     Decimal
+  sale         Sales    @relation(fields: [sale_id], references: [id])
+  sale_id      Int
+  product      Product  @relation(fields: [product_id], references: [id])
+  product_id   Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("detailSales")
+}
+
+model Product {
+  id          Int           @id @default(autoincrement())
+  name        String
+  price       Decimal
+  stock       Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  DetailSales DetailSales[]
+
+  @@map("products")
+}
+
+enum Role {
+  ADMINISTRATOR
+  STAFF
+}
